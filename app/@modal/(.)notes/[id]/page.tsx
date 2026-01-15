@@ -1,4 +1,4 @@
-import NotePreview from "@/components/NotePreview/NotePreview";
+import NotePreview from "@/app/@modal/(.)notes/[id]/NotePreview.client";
 
 interface NoteModalProps {
   params: {
