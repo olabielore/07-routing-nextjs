@@ -8,9 +8,10 @@ const NEXT_PUBLIC_NOTEHUB_TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 const  BASE_URL = "https://notehub-public.goit.study/api";
 
 interface FetchNotesProps {
-  page: number;
-  perPage: number;
+  page?: number;
+  perPage?: number;
   search?: string;
+  tag?: string;
 }
 
 export interface FetchNotesResponse {
@@ -24,7 +25,8 @@ export interface CreateNoteProps {
   tag: string;
 }
 
-export async function fetchNotes({ page, perPage, search} : FetchNotesProps): Promise<FetchNotesResponse> {
+export async function fetchNotes({ page, perPage, search, tag }: FetchNotesProps): Promise<FetchNotesResponse> {
+  
   const response = await axios.get<FetchNotesResponse>(
     `${BASE_URL}/notes`,
     {
@@ -32,6 +34,7 @@ export async function fetchNotes({ page, perPage, search} : FetchNotesProps): Pr
         page,
         perPage,
         search,
+        tag,
       },
       headers: {
         Authorization: `Bearer ${NEXT_PUBLIC_NOTEHUB_TOKEN}`,
