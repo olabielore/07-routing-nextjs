@@ -1,6 +1,7 @@
+"use client";
 
 import css from "./not-found.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
 

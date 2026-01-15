@@ -8,12 +8,12 @@ import NotePreview from "@/components/NotePreview/NotePreview";
 import Modal from "@/components/Modal/Modal";
 
 type NoteModalPageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default async function NoteModalPage ({ params }: NoteModalPageProps) {
 
-  const { id } = params;
+  const { id } = await params;
 
   const queryClient = new QueryClient();
   

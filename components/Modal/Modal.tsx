@@ -11,9 +11,9 @@ interface ModalProps {
 
 export default function Modal({ children }: ModalProps) {
   const router = useRouter();
-    
-  useEffect(() => {
 
+  useEffect(() => {
+    
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         router.back();
@@ -28,12 +28,12 @@ export default function Modal({ children }: ModalProps) {
     };
   }, [router]);
     
-    const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       if (event.target === event.currentTarget) {
         router.back();
       }
     };
-
+  
   return createPortal(
     <div
       className={css.backdrop}
