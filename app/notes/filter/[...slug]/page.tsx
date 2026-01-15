@@ -5,7 +5,7 @@ interface FilteredPageProps {
 };
 
 export default async function FilteredNotesPage({ params }: FilteredPageProps) {
-    const tag = params.tag[0];
+    const slug = params.tag[0];
 
-  return <NotesList tag={tag === "all" ? undefined : tag} />;
+  return <NotesList tag={slug === "all" ? undefined : slug} />;
 }
