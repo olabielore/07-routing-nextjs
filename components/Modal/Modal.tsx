@@ -2,7 +2,6 @@
 
 import css from "../Modal/Modal.module.css";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 interface ModalProps {
   children: React.ReactNode;
