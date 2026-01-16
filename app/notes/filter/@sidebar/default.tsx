@@ -1,4 +1,5 @@
-export default function SidebarDefault() {
-    return null;
-  }
-  
+import SidebarNotes from "./SidebarNotes/SidebarNotes";
+
+export default function DefaultSidebar() {
+  return <SidebarNotes />;
+}

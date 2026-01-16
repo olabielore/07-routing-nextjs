@@ -1,22 +1,21 @@
 "use client";
 
 import css from "../Modal/Modal.module.css";
-import { createPortal } from "react-dom";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 interface ModalProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
+  onClose: () => void;
 }
 
-export default function Modal({ children }: ModalProps) {
-  const router = useRouter();
+export default function Modal({ children, onClose }: ModalProps) {
 
   useEffect(() => {
     
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        router.back();
+        onClose();
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -26,15 +25,15 @@ export default function Modal({ children }: ModalProps) {
         document.removeEventListener("keydown", handleKeyDown);
         document.body.style.overflow = '';
     };
-  }, [router]);
+  }, [onClose]);
     
-    const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
       if (event.target === event.currentTarget) {
-        router.back();
+        onClose();
       }
     };
   
-  return createPortal(
+  return (
     <div
       className={css.backdrop}
       role="dialog"
@@ -44,7 +43,6 @@ export default function Modal({ children }: ModalProps) {
       <div className={css.modal}>
         {children}
       </div>
-    </div>,
-      document.body
+    </div>
   );
 };
