@@ -88,4 +88,3 @@ export default function NotesClient({ tag }: NotesClientProps) {
     </div>
   );
 }
-
