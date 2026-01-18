@@ -14,7 +14,7 @@ type NotePreviewProps = {
 export default function NotePreview({ id }: NotePreviewProps) {
   const router = useRouter();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
@@ -31,6 +31,12 @@ export default function NotePreview({ id }: NotePreviewProps) {
       </Modal>
     );
   }
+
+  if (isError) return (
+    <Modal onClose={handleClose}>
+      <p>Error loading notes</p>;
+    </Modal>
+  );
 
   if (!data) {
     return (
