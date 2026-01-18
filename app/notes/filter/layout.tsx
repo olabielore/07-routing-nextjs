@@ -10,7 +10,6 @@ export default function FilterLayout({ children, sidebar }: Props) {
     <div >
       <main >
         {children}
-
         {sidebar}
       </main>
     </div>
